@@ -1,5 +1,5 @@
 
-public class EjercicioPaula {
+public class EjercicioOtroGrupo {
 
 	public static void main(String[] args) {
 			int a[] = {4,1,2,3};
