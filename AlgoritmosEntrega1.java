@@ -4,7 +4,14 @@ import java.util.Scanner;
 public class AlgoritmosEntrega1 {
 
 	public static void main(String[] args) {		
+		ArrayList<String> a = new ArrayList<>();
+		a.add("Meliza");
+		a.add("Diego");
+		a.add("Dayana");
+		a.add("Yessi");
 		
+		
+		burbuja(a);
 	}
 	
 	/**
@@ -335,5 +342,23 @@ public class AlgoritmosEntrega1 {
 		return c;
 	}
 	
-	
+	public static ArrayList<Integer> burbuja(ArrayList<String> nombres){
+		String aux;
+		
+		
+		for (int i = 0; i < nombres.size(); i++) {
+			for (int j = 0; j < nombres.size()-i-1; j++) {
+				if(nombres.get(j).compareToIgnoreCase(nombres.get(j+1))>0){
+					aux=nombres.get(j);
+					nombres.set(j, nombres.get(j+1));
+					nombres.set(j+1, aux);
+				}
+			}
+		}
+		for (int i = 0; i < nombres.size(); i++) {
+			System.out.print(nombres.get(i)+" ");
+		}
+		
+		return null;
+	}
 }
