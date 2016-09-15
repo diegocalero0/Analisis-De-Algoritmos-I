@@ -4,14 +4,8 @@ import java.util.Scanner;
 public class AlgoritmosEntrega1 {
 
 	public static void main(String[] args) {		
-		ArrayList<String> a = new ArrayList<>();
-		a.add("Meliza");
-		a.add("Diego");
-		a.add("Dayana");
-		a.add("Yessi");
+		System.out.println(aHexadecimal(65987));
 		
-		
-		burbuja(a);
 	}
 	
 	/**
@@ -292,73 +286,76 @@ public class AlgoritmosEntrega1 {
 	
 	
 	/**
-	 * Dado un numero m y un numero n cuantas veces debe operarse m para convertirlo en n
-	 * sabiendo que solo se puede multiplicar por dos o restarle 1
-	 * @param m primero numero
-	 * @param n segundo numero
+	 * Resuelve un cuadrado magico de orden impar
+	 * @param n el orden del cuadrado
+	 * @return la matriz con el cuadrado resuelto
 	 */
-	
-	public static int dosFunciones(int m,int n){
-		
-		if(m==n){
-			return 0;
-		}else{
-			if(m<n){
-				if(n%2==0){
-					return 1+dosFunciones(m, n/2);
+	public static int[][] cuadradoMagico(int n){
+		int i=1;
+		int m[][] = new int[n][n];
+		int x=n-1;
+		int y=n/2;
+		while(i<=n*n){
+			m[y][x]=i++;
+			if((i-1)%n==0){
+				x--;
+			}else{
+				if(x+1==n){
+					x=0;
 				}else{
-					return 2+dosFunciones(m, (n+1)/2);
+					x++;
 				}
 				
-			}else{
-				return 1+dosFunciones(m-1, n);
+				if(y-1==-1){
+					y=n-1;
+				}else{
+					y--;
+				}
 			}
 		}
+		return m;
 	}
 	
 	/**
-	 * Dado un numero m y un numero n cuantas veces debe operarse m para convertirlo en n
-	 * sabiendo que solo se puede multiplicar por dos o restarle 1
-	 * @param m primer numero
-	 * @param n segundo numero
-	 * @return el numero de operaciones que se hacen
+	 * Convierte un numero decimal a hexadecimal
+	 * @param n el numero a convertir
+	 * @return un string con la representacion en hexadecimal del numero n
 	 */
-	public static int dosFunciones2(int m,int n){
-		int c=0;
-		while(m!=n){
-			if(m<n){
-				if(n%2==0){
-					c++;
-					n/=2;
-				}else{
-					c+=2;
-					n=(n+1)/2;
-				}
-			}else{
-				c++;
-				m--;
+	public static String aHexadecimal(int n){
+		if(n<=9){
+			return n+"";
+		}else if(n<=15){
+			switch(n){
+			case 10:
+				return "A";
+			case 11:
+				return "B";
+			case 12:
+				return "C";
+			case 13:
+				return "D";
+			case 14:
+				return "E";
+			case 15:
+				return "F";
+			}
+		}else{
+			switch(n%16){
+			case 10:
+				return aHexadecimal(n/16)+"A";
+			case 11:
+				return aHexadecimal(n/16)+"B";
+			case 12:
+				return aHexadecimal(n/16)+"C";
+			case 13:
+				return aHexadecimal(n/16)+"D";
+			case 14:
+				return aHexadecimal(n/16)+"E";
+			case 15:
+				return aHexadecimal(n/16)+"F";
 			}
 		}
-		return c;
+		return aHexadecimal(n/16)+ (n%16);
 	}
 	
-	public static ArrayList<Integer> burbuja(ArrayList<String> nombres){
-		String aux;
-		
-		
-		for (int i = 0; i < nombres.size(); i++) {
-			for (int j = 0; j < nombres.size()-i-1; j++) {
-				if(nombres.get(j).compareToIgnoreCase(nombres.get(j+1))>0){
-					aux=nombres.get(j);
-					nombres.set(j, nombres.get(j+1));
-					nombres.set(j+1, aux);
-				}
-			}
-		}
-		for (int i = 0; i < nombres.size(); i++) {
-			System.out.print(nombres.get(i)+" ");
-		}
-		
-		return null;
-	}
 }
