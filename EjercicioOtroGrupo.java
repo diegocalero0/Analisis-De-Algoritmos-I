@@ -12,7 +12,7 @@ public class EjercicioOtroGrupo {
 	
 	/**
 	 * Metodo de ordenamiento
-	 * este algoritmo no funciona
+	 * este algoritmo no funciona, no entendi que querian lograr
 	 * @param a
 	 * @return
 	 */
