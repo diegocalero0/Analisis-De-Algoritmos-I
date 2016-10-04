@@ -3,7 +3,7 @@ import java.util.LinkedList;
 public class AlgoritmosVoraces {
 
 	public static void main(String[] args) {
-		System.out.println(caminoCortoCaballo(new Nodo(7, 0, 0), new Nodo(5,4,0)));
+		//System.out.println(beneficioMochila(c, pesos, beneficios));
 	}
 	
 	
@@ -90,18 +90,16 @@ public class AlgoritmosVoraces {
 	 * @param beneficios arreglo con los beneficios Bi para el objeto Xi
 	 * @return
 	 */
-	public static double[] beneficioMochila(int c,int[] pesos,int[] beneficios){
-		quicksort(beneficios,pesos, 0,pesos.length);
-		double sol[] = new double[pesos.length];
+	public static int[] beneficioMochila(int c,int[] pesos,int[] beneficios,int productos[]){
+		quicksort(beneficios,pesos,productos, 0,pesos.length);
+		int sol[] = new int[pesos.length];
 		int resto = c;
 		int i=0;
 		
 		while(i<pesos.length&&pesos[i]<=resto){
-			sol[i]=1;
+			sol[i]=productos[i];
 			resto-=pesos[i++];
 		}
-		if(i<pesos.length)
-			sol[i]=pesos[i]=resto/pesos[i];
 		return sol;
 	}
 	
@@ -112,16 +110,16 @@ public class AlgoritmosVoraces {
 	 * @param limInf
 	 * @param limSup
 	 */
-	public static void quicksort(int beneficios[],int pesos[],int limInf,int limSup){
+	public static void quicksort(int beneficios[],int pesos[],int productos[],int limInf,int limSup){
 		int i=limInf;
 		int j=limSup;
-		int pivote=beneficios[(limInf+limSup)/2]/pesos[(limInf+limSup)/2];
+		double pivote=(double)beneficios[(limInf+limSup)/2]/(double)pesos[(limInf+limSup)/2];
 		
 		do{
-			while(beneficios[i]/pesos[i]<pivote){
+			while((double)beneficios[i]/(double)pesos[i]<pivote){
 				i++;
 			}
-			while(beneficios[j]/pesos[j]>pivote){
+			while((double)beneficios[j]/(double)pesos[j]>pivote){
 				j--;
 			}
 			
@@ -133,15 +131,20 @@ public class AlgoritmosVoraces {
 				aux=beneficios[i];
 				beneficios[i]=beneficios[j];
 				beneficios[j]=aux;
+				
+				aux=productos[i];
+				productos[i]=productos[j];
+				productos[j]=aux;
+				
 				i++;
 				j--;
 			}
 		}while(i<=j);
 		
 		if(j>limInf)
-			quicksort(beneficios,pesos, limInf, j);
+			quicksort(beneficios,pesos,productos ,limInf, j);
 		if(i<limSup)
-			quicksort(beneficios,pesos, i, limSup);
+			quicksort(beneficios,pesos, productos,i, limSup);
 	}
 
 }
