@@ -1,7 +1,7 @@
 public class MochilaDP {
 
 	private static int w = 10;
-	private static int pesos[] = {2 ,2 ,2, 2, 3, 3, 3, 11};
+	private static int pesos[] = {2 ,2 ,2, 2, 3, 3, 3, 9};
 	private static int beneficios[] = {40, 40, 40, 40, 50, 50, 50, 181};
 	private static int dp[][] = new int[w + 1][pesos.length];
 	
