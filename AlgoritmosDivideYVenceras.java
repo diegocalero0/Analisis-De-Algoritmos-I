@@ -9,7 +9,7 @@ public class AlgoritmosDivideYVenceras {
 	
 	/**
 	 * Metodo que busca la suma de la subsecuencia maxima de una  arreglo dado
-	 * @param a arreglo
+	 * @param a aarreglo
 	 * @param i limite izquierdo
 	 * @param d limite derecho
 	 * @return la maxima suma dentro del arreglo
