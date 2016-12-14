@@ -111,6 +111,7 @@ public class AlgoritmosDivideYVenceras {
 			int r = multiplicar(w+x, y+z);
 			int p = multiplicar(w, y);
 			int q =multiplicar(x, z);
+			int a;
 			return p*(int)Math.pow(10, 2*s)+(r-p-q)*(int)Math.pow(10, s)+q;
 		}
 	}
